@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>月音メニュ & MEJI · 双子声库</title>
+
+    <!-- 引入 Font Awesome 6 -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+            background: radial-gradient(ellipse at 30% 20%, #efafc2, #e0c4d3);
+
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+            color: #eeecff;
+
+            line-height: 1.5;
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        /* 动态光晕背景 */
+
+        .bg-aura {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+        .bg-aura::before,
+
+        .bg-aura::after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 70vw;
+
+            height: 70vw;
+
+            border-radius: 50%;
+
+            filter: blur(130px);
+
+            opacity: 0.45;
+
+            animation: floatGlow 25s infinite alternate ease-in-out;
+
+        }
+
+        .bg-aura::before {
+
+            background: #edd5e0;
+
+            top: -20vh;
+
+            left: -20vw;
+
+            animation-duration: 28s;
+
+        }
+
+        .bg-aura::after {
+
+            background: #f4b9cd;
+
+            bottom: -30vh;
+
+            right: -20vw;
+
+            animation-duration: 35s;
+
+            animation-delay: -4s;
+
+        }
+
+        @keyframes floatGlow {
+
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+
+            100% { transform: translate(6%, 12%) scale(1.2); opacity: 0.55; }
+
+        }
+
+
+
+        .container {
+
+            position: relative;
+
+            z-index: 10;
+
+            max-width: 1280px;
+
+            margin: 0 auto;
+
+            padding: 2rem 1.5rem 3rem;
+
+        }
+
+
+
+        /* 头部大标题区域 */
+
+        .hero {
+
+            text-align: center;
+
+            margin-bottom: 2.5rem;
+
+        }
+
+        .brand-badge {
+
+            display: inline-block;
+
+            background: rgba(255, 100, 150, 0.2);
+
+            backdrop-filter: blur(6px);
+
+            border: 1px solid rgba(255, 130, 180, 0.5);
+
+            border-radius: 60px;
+
+            padding: 0.25rem 1.2rem;
+
+            font-size: 0.75rem;
+
+            font-weight: 500;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 1.2rem;
+
+        }
+
+        .main-title {
+
+            font-size: clamp(3rem, 12vw, 6rem);
+
+            font-weight: 800;
+
+            letter-spacing: -0.02em;
+
+            background: linear-gradient(135deg, #FFFFFF, #FFCFA5, #FFAFD0, #C28AFF);
+
+            background-size: 300% 300%;
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+            animation: gradientFlow 8s infinite ease;
+
+            text-shadow: 0 0 20px rgba(255, 80, 140, 0.4);
+
+            margin-bottom: 0.4rem;
+
+        }
+
+        @keyframes gradientFlow {
+
+            0% { background-position: 0% 50%; }
+
+            50% { background-position: 100% 50%; }
+
+            100% { background-position: 0% 50%; }
+
+        }
+
+        .hero-sub {
+
+            font-size: 0.9rem;
+
+            background: rgba(227, 64, 129, 0.6);
+
+            display: inline-block;
+
+            backdrop-filter: blur(4px);
+
+            padding: 0.4rem 1.8rem;
+
+            border-radius: 80px;
+
+            border: 1px solid rgba(255, 200, 220, 0.3);
+
+        }
+
+        .hero-sub i {
+
+            margin: 0 5px;
+
+            color: #ffa7ce;
+
+        }
+
+
+
+        /* 双菜单导航 */
+
+        .menu-tabs {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 1.2rem;
+
+            margin: 2rem 0 2rem;
+
+            flex-wrap: wrap;
+
+        }
+
+        .tab-btn {
+
+            background: rgba(145, 133, 220, 0.7);
+
+            backdrop-filter: blur(8px);
+
+            border: 1px solid rgba(255, 140, 180, 0.5);
+
+            padding: 0.8rem 2.2rem;
+
+            font-size: 1.3rem;
+
+            font-weight: 700;
+
+            border-radius: 60px;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+
+            color: #f0eaff;
+
+            letter-spacing: 2px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .tab-btn i {
+
+            font-size: 1.2rem;
+
+            color: #ffb0cf;
+
+        }
+
+        .tab-btn.active {
+
+            background: linear-gradient(120deg, #ff6090, #b45eff);
+
+            border-color: #fff0f5;
+
+            color: white;
+
+            box-shadow: 0 8px 20px rgba(255, 80, 120, 0.3);
+
+        }
+
+        .tab-btn.active i {
+
+            color: white;
+
+        }
+
+        .tab-btn:hover:not(.active) {
+
+            background: rgba(70, 55, 110, 0.8);
+
+            transform: translateY(-2px);
+
+        }
+
+
+
+        /* 声库内容区域 */
+
+        .voice-panel {
+
+            display: none;
+
+            animation: fadeIn 0.35s ease;
+
+        }
+
+        .voice-panel.active-panel {
+
+            display: block;
+
+        }
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; transform: translateY(12px);}
+
+            to { opacity: 1; transform: translateY(0);}
+
+        }
+
+
+
+        .character-card {
+
+            background: rgba(18, 22, 45, 0.55);
+
+            backdrop-filter: blur(14px);
+
+            border-radius: 2.5rem;
+
+            padding: 1.8rem;
+
+            border: 1px solid rgba(255, 200, 220, 0.25);
+
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
+
+            transition: all 0.2s;
+
+        }
+
+
+
+        /* 内部布局 */
+
+        .profile-grid {
+
+            display: grid;
+
+            grid-template-columns: 220px 1fr;
+
+            gap: 1.8rem;
+
+            align-items: start;
+
+        }
+
+        .visual-area {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1.2rem;
+
+        }
+
+        .avatar-box {
+
+            text-align: center;
+
+        }
+
+        .avatar-img {
+
+            width: 130px;
+
+            height: 130px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            background: #2a2548;
+
+            border: 3px solid rgba(255, 170, 200, 0.7);
+
+            box-shadow: 0 12px 20px -8px black;
+
+            transition: 0.2s;
+
+        }
+
+        .illust-box {
+
+            background: rgba(0,0,0,0.35);
+
+            border-radius: 1.5rem;
+
+            padding: 1rem;
+
+            text-align: center;
+
+            border: 1px solid rgba(255, 160, 190, 0.4);
+
+        }
+
+        .standing-ill {
+
+            width: 100%;
+
+            max-height: 320px;
+
+            object-fit: contain;
+
+            border-radius: 1rem;
+
+            transition: 0.2s;
+
+            background: #0c0a1e50;
+
+        }
+
+        .info-area {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1.2rem;
+
+        }
+
+        .character-name {
+
+            font-size: 2.5rem;
+
+            font-weight: 800;
+
+            background: linear-gradient(145deg, #FFE7D4, #FFBCE5);
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+            letter-spacing: 1px;
+
+        }
+
+        .desc-text {
+
+            background: rgba(0,0,0,0.35);
+
+            padding: 1rem;
+
+            border-radius: 1.3rem;
+
+            font-size: 0.95rem;
+
+            line-height: 1.6;
+
+            color: #e2dcff;
+
+            border-left: 4px solid #ff8eb5;
+
+        }
+
+        .specs {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 0.8rem;
+
+            margin: 0.5rem 0;
+
+        }
+
+        .spec-tag {
+
+            background: rgba(255, 110, 150, 0.2);
+
+            padding: 0.3rem 0.9rem;
+
+            border-radius: 40px;
+
+            font-size: 0.75rem;
+
+            font-weight: 500;
+
+            backdrop-filter: blur(2px);
+
+        }
+
+        .download-area {
+
+            margin-top: 0.8rem;
+
+            border-top: 1px dashed rgba(255,180,200,0.5);
+
+            padding-top: 1rem;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 1rem;
+
+            justify-content: space-between;
+
+        }
+
+        .download-link {
+
+            background: linear-gradient(95deg, #ff4980, #cc5eff);
+
+            border: none;
+
+            padding: 0.8rem 1.8rem;
+
+            border-radius: 60px;
+
+            font-weight: 700;
+
+            font-size: 0.9rem;
+
+            color: white;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+
+        }
+
+        .download-link:hover {
+
+            transform: scale(1.02);
+
+            background: linear-gradient(95deg, #ff6b98, #d177ff);
+
+            box-shadow: 0 8px 18px rgba(255, 70, 130, 0.4);
+
+        }
+
+        .note-edit {
+
+            font-size: 0.7rem;
+
+            color: #aaa5d6;
+
+            background: rgba(0,0,0,0.3);
+
+            border-radius: 2rem;
+
+            padding: 0.2rem 0.8rem;
+
+        }
+
+        .password-note {
+
+            background: rgba(0,0,0,0.4);
+
+            font-size: 0.7rem;
+
+            padding: 0.2rem 0.8rem;
+
+            border-radius: 2rem;
+
+            color: #ffcd94;
+
+        }
+
+
+
+        /* 响应式布局 */
+
+        @media (max-width: 800px) {
+
+            .profile-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 1.2rem;
+
+            }
+
+            .visual-area {
+
+                flex-direction: row;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+            }
+
+            .illust-box {
+
+                flex: 1;
+
+            }
+
+            .avatar-box {
+
+                flex-shrink: 0;
+
+            }
+
+            .character-name {
+
+                font-size: 2rem;
+
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .container {
+
+                padding: 1rem;
+
+            }
+
+            .tab-btn {
+
+                padding: 0.5rem 1.2rem;
+
+                font-size: 1.1rem;
+
+            }
+
+            .character-card {
+
+                padding: 1rem;
+
+            }
+
+            .download-area {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+            .download-link {
+
+                justify-content: center;
+
+            }
+
+        }
+
+
+
+        .footer {
+
+            margin-top: 3rem;
+
+            text-align: center;
+
+            font-size: 0.68rem;
+
+            opacity: 0.6;
+
+            border-top: 1px solid rgba(255,180,200,0.2);
+
+            padding-top: 1.8rem;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="bg-aura"></div>
+
+<div class="container">
+
+    <div class="hero">
+
+        <div class="brand-badge">
+
+            <i class="fas fa-microphone-alt"></i> VOICE SYNTHESIS · 双子声库
+
+        </div>
+
+        <h1 class="main-title">月音メニュ & MEJI</h1>
+
+        <div class="hero-sub">
+
+            <i class="fas fa-star"></i> 双星共鸣 · 灵感声命体 <i class="fas fa-music"></i>
+
+        </div>
+
+        <div style="margin-top: 0.8rem; font-size: 0.8rem; color: #cbbdff;">▼ 点击菜单切换 ▼</div>
+
+    </div>
+
+
+
+    <!-- 双菜单 -->
+
+    <div class="menu-tabs">
+
+        <button class="tab-btn active" data-tab="menyu"><i class="fas fa-feather-alt"></i> 月音メニュ</button>
+
+        <button class="tab-btn" data-tab="meji"><i class="fas fa-moon"></i> MEJI</button>
+
+    </div>
+
+
+
+    <!-- ========= 月音メニュ 声库内容 ========= -->
+
+    <div id="menyu-panel" class="voice-panel active-panel">
+
+        <div class="character-card">
+
+            <div class="profile-grid">
+
+                <!-- 左侧: 头像 + 立绘区 -->
+
+                <div class="visual-area">
+
+                    <div class="avatar-box">
+
+                        <!-- 头像图片 -->
+
+                        <img id="menyu-avatar" class="avatar-img" src="d:\MENYU_for OPENUTAU_v1.0.1\image.bmp" alt="月音メニュ头像" style="background:#251e3a;">
+
+                    </div>
+
+                    <div class="illust-box">
+
+                        <!-- 立绘大图 -->
+
+                        <img id="menyu-standing" class="standing-ill" src="d:\MENYU_for OPENUTAU_v1.0.1\character.png" alt="月音メニュ立绘">
+
+                    </div>
+
+                </div>
+
+                <!-- 右侧: 介绍 + 下载链接 -->
+
+                <div class="info-area">
+
+                    <div class="character-name">月音メニュ</div>
+
+                    <div class="desc-text">
+
+                        <strong>原画师：</strong>Carson<br>
+
+                        <strong>立绘画师：</strong>Carson<br>
+
+                        <strong>CV：</strong>Carson<br>
+
+                        <strong>音源制作：</strong>Carson<br><br>
+
+                        <strong>声线特点：</strong>声音偏男，但不多，低音有力<br>
+
+                        <strong>擅长类型：</strong>擅长抒情，流行歌曲。<br>
+
+                        <strong>性别：</strong>女<br>
+
+                        <strong>种族：</strong>月球人（谁告诉你月球上都是兔子？我可没有兔耳朵只是装饰啊）<br>
+
+                        <strong>年龄：</strong>16<br>
+
+                        <strong>身高：</strong>165<br>
+
+                        <strong>体重：</strong>59<br>
+
+                        <strong>生日：</strong>9.23<br>
+
+                        <strong>代表色：</strong>淡粉色（死亡芭比粉gun）<br>
+
+                        <strong>喜欢的事物：</strong>唱歌，黄瓜<br>
+
+                        <strong>喜欢的国家：</strong>中国<br>
+
+                        <strong>性格：</strong>开朗，暴力（bushi），搞笑
+
+                    </div>
+
+                    <div class="specs">
+
+                        <span class="spec-tag"><i class="fas fa-microphone"></i> 抒情/流行</span>
+
+                        <span class="spec-tag"><i class="fas fa-database"></i> 单音音源</span>
+
+                        <span class="spec-tag"><i class="fas fa-globe"></i> 非商用/R18禁止/AI禁止</span>
+
+                    </div>
+
+                    <div class="download-area">
+
+                        <a href="https://bowlroll.net/file/351233" class="download-link" target="_blank"><i class="fas fa-download"></i> 下载月音メニュ声库</a>
+
+                        <div class="password-note"><i class="fas fa-lock"></i> 下载密码：Getsune Menyu<br>※ BowlRoll页面需登录并验证18+</div>
+
+                        <div class="note-edit"><i class="far fa-file-alt"></i> 使用规约 / 二创守则详见配布页面</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========= MEJI 声库内容 ========= -->
+
+    <div id="meji-panel" class="voice-panel">
+
+        <div class="character-card">
+
+            <div class="profile-grid">
+
+                <div class="visual-area">
+
+                    <div class="avatar-box">
+
+                        <img id="meji-avatar" class="avatar-img" src="d:\MEJI_forOPENUTAU_v1.0.0\image.bmp" alt="MEJI头像">
+
+                    </div>
+
+                    <div class="illust-box">
+
+                        <img id="meji-standing" class="standing-ill" src="d:\MEJI_forOPENUTAU_v1.0.0\character.png" alt="MEJI立绘">
+
+                    </div>
+
+                </div>
+
+                <div class="info-area">
+
+                    <div class="character-name">MEJI</div>
+
+                    <div class="desc-text">
+
+                        <strong>原画师：</strong>Carson<br>
+
+                        <strong>立绘画师：</strong>水冗<br>
+
+                        <strong>CV：</strong>Carson<br>
+
+                        <strong>音源制作：</strong>Carson<br><br>
+
+                        <strong>声线特点：</strong>声音炒鸡偏男，低音及其有力，缺点是一些音的辅音机械感重<br>
+
+                        <strong>擅长类型：</strong>擅长节奏快，低音炮，流行歌曲<br>
+
+                        <strong>性别：</strong>？？<br>
+
+                        <strong>种族：</strong>？？<br>
+
+                        <strong>年龄：</strong>？？<br>
+
+                        <strong>身高：</strong>175（170+5cm恨天高）<br>
+
+                        <strong>体重：</strong>100<br>
+
+                        <strong>生日：</strong>5.20<br>
+
+                        <strong>代表色：</strong>抹茶绿<br>
+
+                        <strong>喜欢的事物：</strong>唱歌，抹茶<br>
+
+                        <strong>喜欢的国家：</strong>中国，日本（单纯因为抹茶好喝，无崇洋媚外）<br>
+
+                        <strong>性格：</strong>优雅（和月音在一起时从来没优雅过），自信，装男生，细心
+
+                    </div>
+
+                    <div class="specs">
+
+                        <span class="spec-tag"><i class="fas fa-microphone"></i> 低音炮/流行</span>
+
+                        <span class="spec-tag"><i class="fas fa-database"></i> 单音音源</span>
+
+                        <span class="spec-tag"><i class="fas fa-globe"></i> 非商用/R18禁止/AI禁止</span>
+
+                    </div>
+
+                    <div class="download-area">
+
+                        <a href="https://bowlroll.net/file/351238" class="download-link" target="_blank"><i class="fas fa-download"></i> 下载MEJI声库</a>
+
+                        <div class="password-note"><i class="fas fa-lock"></i> 下载密码：MEJI<br>※ BowlRoll页面需登录并验证18+</div>
+
+                        <div class="note-edit"><i class="far fa-file-alt"></i> 使用规约 / 二创守则详见配布页面</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="footer">
+
+        <i class="fas fa-code-branch"></i> 月音メニュ & MEJI · 官方声库站点
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    // 选项卡切换逻辑: 菜单分为 月音メニュ 和 MEJI 两个部分
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    const panels = {
+
+        menyu: document.getElementById('menyu-panel'),
+
+        meji: document.getElementById('meji-panel')
+
+    };
+
+
+
+    function switchTab(activeId) {
+
+        tabBtns.forEach(btn => {
+
+            const tabValue = btn.getAttribute('data-tab');
+
+            if (tabValue === activeId) {
+
+                btn.classList.add('active');
+
+            } else {
+
+                btn.classList.remove('active');
+
+            }
+
+        });
+
+        Object.keys(panels).forEach(key => {
+
+            if (key === activeId) {
+
+                panels[key].classList.add('active-panel');
+
+            } else {
+
+                panels[key].classList.remove('active-panel');
+
+            }
+
+        });
+
+    }
+
+
+
+    tabBtns.forEach(btn => {
+
+        btn.addEventListener('click', (e) => {
+
+            const tabId = btn.getAttribute('data-tab');
+
+            if (tabId === 'menyu') switchTab('menyu');
+
+            else if (tabId === 'meji') switchTab('meji');
+
+        });
+
+    });
+
+</script>
+
+
+
+</body>
+
+</html>
