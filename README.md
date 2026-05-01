@@ -3,9 +3,8 @@
 提供立绘的下载和声库的下载！
 
 （冷知识，立绘下载直接右键另存为啦）
-<img width="250" height="500" alt="ebda30dfbe37ee4cab2c076044c196c9" src="https://github.com/user-attachments/assets/a8ad15eb-bdf0-4698-aac9-75dcb7f1178c" />
+<img width="1043" height="2333" alt="ebda30dfbe37ee4cab2c076044c196c9" src="https://github.com/user-attachments/assets/79acbbaf-30f2-41d4-9499-5165c1f4f289" />
 #月音メニュ
-
 来自月球的搞笑女一枚~~
 
 炒鸡喜欢黄瓜
@@ -75,7 +74,7 @@ AI相关❌
 
 密码：Getsune Menyu
 
-<img width="350" height="475" alt="8f1d77f9efb8e46dfd6576ac3e4d6ce2" src="https://github.com/user-attachments/assets/f6d4721b-3279-4cf5-a5e5-a6cbb61f048a" />
+<img width="1279" height="1706" alt="8f1d77f9efb8e46dfd6576ac3e4d6ce2" src="https://github.com/user-attachments/assets/2cd8118a-51ff-4b13-b527-9dc7c9fa0256" />
 #MEJI
 
 “优雅的女士”
